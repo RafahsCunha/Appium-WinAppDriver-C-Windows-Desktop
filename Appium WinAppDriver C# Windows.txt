@@ -1,0 +1,98 @@
+Pacotes Necessários 
+
+-> Visual Studio Community 
+1 - Universao Windows Platform Development
+2 - .Net Desktop Development
+
+-> Node.js
+1 - Site Node.js/Download (instalar)
+2 - testar, cmd + comando node --version 
+
+-> Appium
+1 - cmd
+2 - npm --version
+3 - npm install -g appium
+
+-> Appium WinAppDriver
+1 - github.com/microsoft/WinAppDriver
+2 - Releases 20 -> Assets 
+3 - WindowsApplicationDriver.msi (instalar)
+
+
+
+
+Ativar o modo desenvolvedor do Windows 10
+1 - Configurações
+2 - Para desenvolvedores
+3 - Habilitar modo do desenvolvedor
+
+
+Modolo 1
+Criar projeto com Aplicativo do Console (.Net Framework) C# Windows Console
+Progeto -> Gerenciador de pacotes do Nuget
+Instalar Appium.WebDriver
+
+
+Modolo 2 (Rodando a primeira automação)
+
+Código para abrir o bloco de notas, tirar um print da tela, fechar o bloco de notas e salvar o print em uma pasta desejada
+
+1 - C:\Program Files (x86)\Windows Application Driver (O Driver WindowsApplicationDriver.exe precisa estar rodando)
+2 - Verificar em qual porta o Windows Application Driver está rodando, selecionar no código a mesma porta que aparece no prompt de comemando.
+3 - Rodar o código
+4 - Verificar se deu certo: ir em \bin ir em \debug selecionar Abrir Pasta do Gerenciador de Arquivos
+
+class Program
+    {
+        static void Main(string[] args)
+        {
+            WindowsDriver<WindowsElement> notePadSession; //Objeto WindwosDriver com o tipo genérico WindowsElement 
+            AppiumOptions desiredCapabilities = new AppiumOptions();
+            desiredCapabilities.AddAdditionalCapability("app", @"C:\Windows\system32\notepad.exe");
+
+            notePadSession = new WindowsDriver<WindowsElement>(new Uri("http://127.0.0.1:4723"),desiredCapabilities); //Porta onde o WinAppDriver está rodando, :4723
+
+            if (notePadSession == null)
+            {
+                Console.WriteLine("O App não foi iniciado!! ");
+                return;
+            }    
+
+            Console.WriteLine($"Titulo da aplicação: {notePadSession.Title}");
+
+            notePadSession.Manage().Window.Maximize();
+
+            var screenShot = notePadSession.GetScreenshot();
+            screenShot.SaveAsFile($".\\Screenshot{DateTime.Now.ToString("ddMMyyyyhhmmss")}.png",
+                OpenQA.Selenium.ScreenshotImageFormat.Png);
+
+            notePadSession.Quit();
+       
+        }
+    }
+
+
+Modolo 3 (Abrir calculadora sem iniciar o WinAppDriver.exe , salvando arquivo de log em um TestLog.txt  )
+Pré requisitos (Ter instalado)
+1 - WinAppDriver
+2 - Node.js
+3 - Appium NPM Package
+
+class Program
+    {
+        //MANIPULANDO BLOCO DE NOTAS EXECUTANDO O WinAppDriver.exe
+        static void Main(string[] args)
+        {
+            var appiumLocalService = new AppiumServiceBuilder().UsingPort(4723).WithLogFile(new FileInfo(@"C:\Users\Rafa\Desktop\FACULDADE\Onboarding Totvs\Curso Testes Automatizados - Udemy\RunNotePad\RunNotePad\bin\Debug\TestLog.txt")).Build();
+
+            appiumLocalService.Start();
+
+            AppiumOptions ao = new AppiumOptions();
+
+            ao.AddAdditionalCapability("app", "Microsoft.WindowsCalculator_8wekyb3d8bbwe!App");
+
+            WindowsDriver<WindowsElement> session = new WindowsDriver<WindowsElement>(appiumLocalService, ao);
+
+            session.Quit();
+        }
+
