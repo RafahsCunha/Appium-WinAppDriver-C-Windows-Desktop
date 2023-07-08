@@ -20,6 +20,9 @@ namespace TestProject1
             appOptions.AddAdditionalCapability("app", "Microsoft.WindowsAlarms_8wekyb3d8bbwe!App"); //ID do Alarme
 
             sessionCalculator = new WindowsDriver<WindowsElement>(new Uri("http://127.0.0.1:4723"), appOptions);
+
+            Assert.Equal("Relógio", sessionCalculator.Title);
+
         }
     }
 }
