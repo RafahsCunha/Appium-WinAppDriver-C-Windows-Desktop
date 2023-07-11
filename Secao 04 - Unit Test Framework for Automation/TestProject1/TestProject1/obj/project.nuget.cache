@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "BgoVxSKNpNxgybBjp0VJdzY443mSRacaWZFtVaVPFsH6yxlldca6h/7rMVK5ZtMBpAgZGruPMXy2MUdaB6uDAQ==",
+  "dgSpecHash": "O2iris3bK+005JdduvK4s6udOuIlbsMRgInqyG7qp2JttFn7T7I+T0NpnKoLebPcpwewtax+Mcf+r6Tho3Hj5g==",
   "success": true,
   "projectFilePath": "C:\\Users\\Rafa\\Desktop\\FACULDADE\\Onboarding Totvs\\Curso Teste WinAppDriver - Udemy\\Secao 04 - Unit Test Framework for Automation\\TestProject1\\TestProject1\\TestProject1.csproj",
   "expectedPackageFiles": [
@@ -16,6 +16,7 @@
     "C:\\Users\\Rafa\\.nuget\\packages\\microsoft.testplatform.testhost\\17.1.0\\microsoft.testplatform.testhost.17.1.0.nupkg.sha512",
     "C:\\Users\\Rafa\\.nuget\\packages\\microsoft.win32.primitives\\4.3.0\\microsoft.win32.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\Rafa\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
+    "C:\\Users\\Rafa\\.nuget\\packages\\mstest.testframework\\3.0.4\\mstest.testframework.3.0.4.nupkg.sha512",
     "C:\\Users\\Rafa\\.nuget\\packages\\netstandard.library\\1.6.1\\netstandard.library.1.6.1.nupkg.sha512",
     "C:\\Users\\Rafa\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\Rafa\\.nuget\\packages\\nuget.frameworks\\5.11.0\\nuget.frameworks.5.11.0.nupkg.sha512",
